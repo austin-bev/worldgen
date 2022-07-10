@@ -32,7 +32,13 @@ class World_Democracy(WorldTraits):
     def __init__(self):
         super().__init__()
         self.name = 'Democracy'
-        self.conflicting = [World_Dictatorship]
+        self.conflicting = [World_Dictatorship, World_Monarchy]
+
+class World_Monarchy(WorldTraits):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Democracy'
+        self.conflicting = [World_Democracy]
 
 class World_Corrupt(WorldTraits):
     def __init__(self):
