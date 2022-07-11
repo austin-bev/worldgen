@@ -1,4 +1,6 @@
-from traits_people import PeopleTraits
+from namegen import religionNames
+from traits_functions import splitTraits
+from traits_people import PeopleTraits, somePeopleTraits
 
 class Religion:
     def __init__(self, name, traits):
@@ -8,3 +10,8 @@ class Religion:
     
     def __str__(self):
         return f"Religion: {self.name}. Desirable Traits: {self.desirable}, Undesirable Traits: {self.undesirable}"
+
+def generateReligions(num_religions):
+    religionnames = religionNames(num_religions)
+    religions = [Religion(i, splitTraits(somePeopleTraits(4))) for i in religionnames]
+    return religions

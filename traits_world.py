@@ -1,8 +1,6 @@
 import inspect
 import sys
-import random
 from typing import Type
-
 from traits_functions import someTraits
 
 class WorldTraits:

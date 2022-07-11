@@ -1,6 +1,5 @@
 import inspect
 import sys
-import random
 from typing import Type
 from traits_people import *
 
@@ -35,7 +34,7 @@ class Kingdom_Militarist(KingdomTraits):
         super().__init__()
         self.name = 'Militarist'
         self.conflicting = [Kingdom_WellLiked, Kingdom_Peaceful]  
-        self.people_traits = []   
+        self.people_traits = [Kingdom_WellLiked]   
 
 class Kingdom_Vegetarian(KingdomTraits):
     def __init__(self):
@@ -111,7 +110,7 @@ class Kingdom_WellLiked(KingdomTraits):
     def __init__(self):
         super().__init__()
         self.name = 'Well-liked'
-        self.conflicting = [Kingdom_Disliked]   
+        self.conflicting = [Kingdom_Disliked, Kingdom_Militarist]   
         self.people_traits = [People_Kind, People_Honest, People_Charitable]   
 
 class Kingdom_Disliked(KingdomTraits):

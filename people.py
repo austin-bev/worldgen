@@ -1,3 +1,4 @@
+import kingdom
 from namegen import kingdomNames, personNameGeneration, religionNames
 from religion import Religion
 from traits_functions import updateWeights, getWeightedTraits, splitTraits
@@ -18,7 +19,7 @@ class Person:
     def __str__(self):
         return f"Name: {self.firstname} {self.lastname} ({self.gender}). Traits: {self.traits}. Kingdom: {self.kingdom.name}"
 
-def personWeights(kingdom : worldgen.Kingdom, leader = False):
+def personWeights(kingdom, leader = False):
     #Kingdom Weights
     weighted_traits = getWeightedTraits(kingdom)
     all_traits = allPeopleTraits()
@@ -33,13 +34,13 @@ def personWeights(kingdom : worldgen.Kingdom, leader = False):
     weights = updateWeights({type(i) for i in kingdom.religion.undesirable}, all_traits, RELIGION_NEGATIVE_MULTIPLIER*religionBonus, existing_weights = weights)
     return weights
 
-def generateLeader(kingdom : worldgen.Kingdom):
+def generateLeader(kingdom):
     weights = personWeights(kingdom, leader=True)
     firstname, lastname, gender = personNameGeneration(1)[0]
     traits = somePeopleTraits(3, weights) 
     return Person(firstname, lastname, gender, traits, kingdom)
 
-def generatePeople(kingdom : worldgen.Kingdom, number):
+def generatePeople(kingdom, number):
     all_people = []
     weights = personWeights(kingdom)
     for i in range(number):
@@ -49,7 +50,7 @@ def generatePeople(kingdom : worldgen.Kingdom, number):
     return all_people
 
 if __name__ == '__main__':
-    kingdom = worldgen.Kingdom(kingdomNames(1)[0], 0, Religion(religionNames(1)[0], splitTraits(somePeopleTraits(4))), someKingdomTraits(2))
+    kingdom = kingdom.generateKingdoms(1)[0]
     people = generatePeople(kingdom, 3)
     print(kingdom)
     print(kingdom.religion)
