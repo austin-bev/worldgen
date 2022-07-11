@@ -84,7 +84,7 @@ class World_Underwater(WorldTraits):
     def __init__(self):
         super().__init__()
         self.name = 'Underwater'
-        self.conflicting = [World_Skyward, World_Flooded, World_Archipelago]
+        self.conflicting = [World_Skyward, World_Flooded, World_Archipelago, World_Rainy]
 
 class World_Archipelago(WorldTraits):
     def __init__(self):
@@ -115,7 +115,7 @@ class World_Rainy(WorldTraits):
     def __init__(self):
         super().__init__()
         self.name = 'Rainy'
-        self.conflicting = [World_Desert]
+        self.conflicting = [World_Desert, World_Underwater]
 
 class World_Foggy(WorldTraits):
     def __init__(self):

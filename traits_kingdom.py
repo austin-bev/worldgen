@@ -164,6 +164,18 @@ class Kingdom_Schizophrenic(KingdomTraits):
         self.name = 'Schizophrenic'
         self.conflicting = []  
 
+class Kingdom_Charitable(KingdomTraits):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Charitable'
+        self.conflicting = [Kingdom_Greedy]  
+
+class Kingdom_Greedy(KingdomTraits):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Greedy'
+        self.conflicting = [Kingdom_Charitable]  
+
 #Return pointers to all above classes in a big list
 def allKingdomTraits():
     all_traits = []

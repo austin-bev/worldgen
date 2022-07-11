@@ -2,13 +2,13 @@ import random
 from fileio import *
 
 def worldName():
-    return nameGeneration('townnames.csv')[0]
+    return nameGeneration('names_town.csv')[0]
 
 def kingdomNames(kingdoms = 5):
-    return nameGeneration('townnames.csv', noise = 2, size = kingdoms)
+    return nameGeneration('names_town.csv', noise = 2, size = kingdoms)
 
 def religionNames(religions = 5):
-    return nameGeneration('religionnames.csv', size = religions)
+    return nameGeneration('names_religion.csv', size = religions)
 
 def nameGeneration(filename, noise = 1, size = 1):
     s0, s1 = parseCsv(filename)
