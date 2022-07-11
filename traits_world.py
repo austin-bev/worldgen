@@ -21,6 +21,7 @@ class World_Militarist(WorldTraits):
     def __init__(self):
         super().__init__()
         self.name = 'Militarist'
+        self.conflicting = []
 
 class World_Dictatorship(WorldTraits):
     def __init__(self):
@@ -44,6 +45,7 @@ class World_Corrupt(WorldTraits):
     def __init__(self):
         super().__init__()
         self.name = 'Corrupt'
+        self.conflicting = []
 
 class World_Libertarian(WorldTraits):
     def __init__(self):
@@ -137,7 +139,6 @@ def allWorldTraits():
             all_traits.append(obj)
     return all_traits
 
-#Conplexity of this isn't great to be honest
 def someWorldTraits(num_traits = 1) -> Type[WorldTraits]:
     all_traits = allWorldTraits()
     traits = []

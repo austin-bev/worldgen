@@ -210,14 +210,13 @@ class Kingdom_Hunting(KingdomTraits):
 def allKingdomTraits():
     all_traits = []
     for name, obj in inspect.getmembers(sys.modules[__name__]):
-        if inspect.isclass(obj) and obj.__module__ == __name__ and obj != KingdomTraits:
+        if inspect.isclass(obj) and obj.__module__ == __name__ and obj != KingdomTraits: #We import people traits so a bit more work here
             all_traits.append(obj)
     return all_traits
-
-#Conplexity of this isn't great to be honest
+    
 def someKingdomTraits(num_traits = 1) -> Type[KingdomTraits]:
     all_traits = allKingdomTraits()
-    traits = [] #These could all be sets...
+    traits = []
     conflicting_all = set()
     seen = set()
     for i in range(num_traits):

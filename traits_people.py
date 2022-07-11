@@ -200,8 +200,7 @@ def allPeopleTraits():
             all_traits.append(obj)
     return all_traits
 
-#Conplexity of this isn't great to be honest
-def somePeopleTraits(num_traits = 1) -> Type[PeopleTraits]:
+def somePeopleTraits(num_traits = 1) -> Type[PeopleTraits]: 
     all_traits = allPeopleTraits()
     traits = []
     conflicting_all = set()
@@ -216,6 +215,7 @@ def somePeopleTraits(num_traits = 1) -> Type[PeopleTraits]:
         traits.append(chosen_trait)
     return traits
 
+#This is dumb
 def splitPeopleTraits(allTraits):
     l = len(allTraits)
     if l % 2 == 0:
