@@ -5,10 +5,8 @@ from typing import Type
 
 class PeopleTraits:
     def __init__(self):
-        self.name = "World Trait Placeholder"
+        self.name = "People Trait Placeholder"
         self.conflicting = []
-        #World Generation biases
-        #Islands, mountains, volcanoes, ect...
     
     def __str__(self):
         return self.name
@@ -58,30 +56,6 @@ class People_Homosexual(PeopleTraits):
         super().__init__()
         self.name = 'Homosexual'
         self.conflicting = []
-
-class People_Attractive(PeopleTraits):
-    def __init__(self):
-        super().__init__()
-        self.name = 'Attractive'
-        self.conflicting = [People_Ugly]
-
-class People_Ugly(PeopleTraits):
-    def __init__(self):
-        super().__init__()
-        self.name = 'Ugly'
-        self.conflicting = [People_Attractive]
-
-class People_Dwarf(PeopleTraits):
-    def __init__(self):
-        super().__init__()
-        self.name = 'Dwarf'
-        self.conflicting = [People_Tall]
-
-class People_Tall(PeopleTraits):
-    def __init__(self):
-        super().__init__()
-        self.name = 'Tall'
-        self.conflicting = [People_Dwarf]
 
 class People_Genius(PeopleTraits):
     def __init__(self):
@@ -183,7 +157,40 @@ class People_Content(PeopleTraits):
     def __init__(self):
         super().__init__()
         self.name = 'Content'
-        self.conflicting = [People_Ambitious]    
+        self.conflicting = [People_Ambitious] 
+          
+class People_Artsy(PeopleTraits):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Artsy'
+        self.conflicting = []  
+
+# Physical Traits
+class People_Attractive(PeopleTraits):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Attractive'
+        self.conflicting = [People_Ugly]
+
+class People_Ugly(PeopleTraits):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Ugly'
+        self.conflicting = [People_Attractive]
+
+class People_Dwarf(PeopleTraits):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Dwarf'
+        self.conflicting = [People_Tall]
+
+class People_Tall(PeopleTraits):
+    def __init__(self):
+        super().__init__()
+        self.name = 'Tall'
+        self.conflicting = [People_Dwarf]
+
+#Interests TODO
 
 #Return pointers to all above classes in a big list
 def allPeopleTraits():
@@ -196,16 +203,16 @@ def allPeopleTraits():
 #Conplexity of this isn't great to be honest
 def somePeopleTraits(num_traits = 1) -> Type[PeopleTraits]:
     all_traits = allPeopleTraits()
-    traits = [] #These could all be sets...
-    conflicting_all = []
-    seen = []
+    traits = []
+    conflicting_all = set()
+    seen = set()
     for i in range(num_traits):
         chosen_trait = random.choice(all_traits)
         while chosen_trait in conflicting_all or chosen_trait in seen:
             chosen_trait = random.choice(all_traits)
-        seen.append(chosen_trait)
+        seen.add(chosen_trait)
         chosen_trait : PeopleTraits = chosen_trait() #Make the class reference an object
-        conflicting_all += chosen_trait.conflicting #Add the objects's conflicting references to the list
+        conflicting_all.update(chosen_trait.conflicting) #Add the objects's conflicting references to the list
         traits.append(chosen_trait)
     return traits
 

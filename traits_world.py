@@ -37,7 +37,7 @@ class World_Democracy(WorldTraits):
 class World_Monarchy(WorldTraits):
     def __init__(self):
         super().__init__()
-        self.name = 'Democracy'
+        self.name = 'Monarchy'
         self.conflicting = [World_Democracy]
 
 class World_Corrupt(WorldTraits):
@@ -140,16 +140,16 @@ def allWorldTraits():
 #Conplexity of this isn't great to be honest
 def someWorldTraits(num_traits = 1) -> Type[WorldTraits]:
     all_traits = allWorldTraits()
-    traits = [] #These could all be sets...
-    conflicting_all = []
-    seen = []
+    traits = []
+    conflicting_all = set()
+    seen = set()
     for i in range(num_traits):
         chosen_trait = random.choice(all_traits)
         while chosen_trait in conflicting_all or chosen_trait in seen:
             chosen_trait = random.choice(all_traits)
-        seen.append(chosen_trait)
+        seen.add(chosen_trait)
         chosen_trait : WorldTraits = chosen_trait() #Make the class reference an object
-        conflicting_all += chosen_trait.conflicting #Add the objects's conflicting references to the list
+        conflicting_all.update(chosen_trait.conflicting) #Add the objects's conflicting references to the list
         traits.append(chosen_trait)
     return traits
 
