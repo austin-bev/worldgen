@@ -1,5 +1,4 @@
-from traits_people import PeopleTraits, somePeopleTraits
-
+from traits_people import PeopleTraits
 
 class Religion:
     def __init__(self, name, traits):

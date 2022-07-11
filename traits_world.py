@@ -3,6 +3,8 @@ import sys
 import random
 from typing import Type
 
+from traits_functions import someTraits
+
 class WorldTraits:
     def __init__(self):
         self.name = "World Trait Placeholder"
@@ -140,19 +142,8 @@ def allWorldTraits():
     return all_traits
 
 def someWorldTraits(num_traits = 1) -> Type[WorldTraits]:
-    all_traits = allWorldTraits()
-    traits = []
-    conflicting_all = set()
-    seen = set()
-    for i in range(num_traits):
-        chosen_trait = random.choice(all_traits)
-        while chosen_trait in conflicting_all or chosen_trait in seen:
-            chosen_trait = random.choice(all_traits)
-        seen.add(chosen_trait)
-        chosen_trait : WorldTraits = chosen_trait() #Make the class reference an object
-        conflicting_all.update(chosen_trait.conflicting) #Add the objects's conflicting references to the list
-        traits.append(chosen_trait)
-    return traits
+    all_world_traits = allWorldTraits()
+    return someTraits(all_world_traits, num_traits, None)
 
 if __name__ == '__main__':
     trait = someWorldTraits(num_traits = 2)

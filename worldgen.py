@@ -2,7 +2,8 @@ import random
 from namegen import *
 from relationships import Relationships
 from religion import Religion
-from traits_people import somePeopleTraits, splitPeopleTraits
+from traits_functions import splitTraits
+from traits_people import somePeopleTraits
 from traits_world import WorldTraits, someWorldTraits
 from traits_kingdom import KingdomTraits, someKingdomTraits
 
@@ -43,7 +44,7 @@ if __name__ == "__main__":
 
     #Create religion objects
 
-    religions = [Religion(i, splitPeopleTraits(somePeopleTraits(4))) for i in religionnames]
+    religions = [Religion(i, splitTraits(somePeopleTraits(4))) for i in religionnames]
 
     #Create kingdom objects
     kingdoms = [Kingdom(i, 0, random.choice(religions), someKingdomTraits(2)) for i in kingdomnames]

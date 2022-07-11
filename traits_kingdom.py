@@ -213,21 +213,10 @@ def allKingdomTraits():
         if inspect.isclass(obj) and obj.__module__ == __name__ and obj != KingdomTraits: #We import people traits so a bit more work here
             all_traits.append(obj)
     return all_traits
-    
+
 def someKingdomTraits(num_traits = 1) -> Type[KingdomTraits]:
-    all_traits = allKingdomTraits()
-    traits = []
-    conflicting_all = set()
-    seen = set()
-    for i in range(num_traits):
-        chosen_trait = random.choice(all_traits)
-        while chosen_trait in conflicting_all or chosen_trait in seen:
-            chosen_trait = random.choice(all_traits)
-        seen.add(chosen_trait)
-        chosen_trait : KingdomTraits = chosen_trait() #Make the class reference an object
-        conflicting_all.update(chosen_trait.conflicting) #Add the objects's conflicting references to the list
-        traits.append(chosen_trait)
-    return traits
+    all_kingdom_traits = allKingdomTraits()
+    return someTraits(all_kingdom_traits, num_traits, None)
 
 if __name__ == '__main__':
     trait = someKingdomTraits(num_traits = 2)

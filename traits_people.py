@@ -1,7 +1,7 @@
 import inspect
 import sys
-import random
 from typing import Type
+from traits_functions import someTraits
 
 class PeopleTraits:
     def __init__(self):
@@ -200,27 +200,9 @@ def allPeopleTraits():
             all_traits.append(obj)
     return all_traits
 
-def somePeopleTraits(num_traits = 1) -> Type[PeopleTraits]: 
-    all_traits = allPeopleTraits()
-    traits = []
-    conflicting_all = set()
-    seen = set()
-    for i in range(num_traits):
-        chosen_trait = random.choice(all_traits)
-        while chosen_trait in conflicting_all or chosen_trait in seen:
-            chosen_trait = random.choice(all_traits)
-        seen.add(chosen_trait)
-        chosen_trait : PeopleTraits = chosen_trait() #Make the class reference an object
-        conflicting_all.update(chosen_trait.conflicting) #Add the objects's conflicting references to the list
-        traits.append(chosen_trait)
-    return traits
-
-#This is dumb
-def splitPeopleTraits(allTraits):
-    l = len(allTraits)
-    if l % 2 == 0:
-        h = int(l / 2)
-        return allTraits[0:h], allTraits[h:l]
+def somePeopleTraits(num_traits = 1, weights = None) -> Type[PeopleTraits]: 
+    all_people_traits = allPeopleTraits()
+    return someTraits(all_people_traits, num_traits, weights)
 
 if __name__ == '__main__':
     trait = somePeopleTraits(num_traits = 2)
