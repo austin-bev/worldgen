@@ -1,4 +1,5 @@
 import random
+import people
 from namegen import *
 from relationships import Relationships
 from religion import Religion
@@ -24,8 +25,12 @@ class Kingdom:
         self.created : int = year_created 
         self.religion : Religion = religion
         self.culture : Culture = "" #TODO
+        self.leader : people.Person = ""
         self.kingdom_traits : list[KingdomTraits] = traits
         self.slogan : str = "" #Generated from existing traits. TODO
+
+    def setLeader(self, leader):
+        self.leader = leader
 
     def __str__(self):
         return f"Kingdom: {self.name}. Religion: {self.religion.name}, Kingdom Traits: {self.kingdom_traits}"
@@ -48,17 +53,19 @@ if __name__ == "__main__":
 
     #Create kingdom objects
     kingdoms = [Kingdom(i, 0, random.choice(religions), someKingdomTraits(2)) for i in kingdomnames]
-
+    for i in kingdoms: i.setLeader(people.generateLeader(i))
     #Generate world object and traits
     world_traits = someWorldTraits(3)
     world = World(worldName(), kingdoms, religions, world_traits)
 
     print(world,'\n')
-    for i in kingdoms:
+    for i in kingdoms: 
         print(i)
+        print('\t',"Leader",i.leader)
     print()
-    for i in religions:
-        print(i)
+    for i in religions: print(i)
+
+
 
     relationships = Relationships(starter_kingdoms)
     

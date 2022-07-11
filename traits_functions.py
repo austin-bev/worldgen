@@ -21,13 +21,12 @@ def getWeightedTraits(kingdom):
             traits.add(j)
     return traits
 
-#Not specific to people
-def createWeights(weighted_traits, all_traits):
+def updateWeights(weighted_traits, all_traits, multiplier, existing_weights = None):
     l = len(all_traits)
-    weights = [10 for i in range(l)]
+    weights = existing_weights if existing_weights else [10 for i in range(l)] 
     for i in range(l):
         if all_traits[i] in weighted_traits: #Weighted traits should be hash table/set for O(1) search
-            weights[i]=weights[i]*10
+            weights[i]= weights[i]*multiplier
     return weights
 
 #This is dumb
