@@ -9,7 +9,7 @@ class Religion:
         self.undesirable : list[PeopleTraits] = traits[1]
     
     def __str__(self):
-        return f"Religion: {self.name}. Desirable Traits: {self.desirable}, Undesirable Traits: {self.undesirable}"
+        return f"{self.name}. Desirable Traits: {self.desirable}, Undesirable Traits: {self.undesirable}"
 
 def generateReligions(num_religions):
     religionnames = religionNames(num_religions)

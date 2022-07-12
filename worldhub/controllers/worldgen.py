@@ -15,7 +15,7 @@ class World:
         self.world_traits : list[WorldTraits] = world_traits
     
     def __str__(self):
-        return f"World: {self.name}. Capital: {self.capital.name}, World Traits: {self.world_traits}"
+        return f"{self.name}. Capital: {self.capital.name}, World Traits: {self.world_traits}"
 
 class Culture:
     def __init__(self):

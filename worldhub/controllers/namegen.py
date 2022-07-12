@@ -36,6 +36,6 @@ def personNameGeneration(size):
         rand = random.randint(0,len(firstname_all))
         firstname = firstname_all[rand]
         gender = gender_all[rand]
-        lastname = lastname_all[random.randint(0,len(lastname_all))]
+        lastname = random.choice(lastname_all)
         namelist.append((firstname, lastname, gender))
     return namelist

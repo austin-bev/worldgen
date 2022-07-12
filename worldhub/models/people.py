@@ -19,7 +19,7 @@ class Person:
         self.religion : Religion = kingdom.religion
     
     def __str__(self):
-        return f"Name: {self.firstname} {self.lastname} ({self.gender}). Traits: {self.traits}. Kingdom: {self.kingdom.name}"
+        return f"Name: {self.firstname} {self.lastname} ({self.gender}). Traits: {self.traits}."
 
 def personWeights(kingdom, leader = False):
     #Kingdom Weights
