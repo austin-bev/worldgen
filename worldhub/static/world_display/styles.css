@@ -1,3 +1,11 @@
+.green{
+    color: greenyellow;
+}
+
+.red{
+    color: red;
+}
+
 .Kingdoms{
     align-items: baseline;
     display: flex;
@@ -5,10 +13,13 @@
 }
 
 .kingdomtitle{
-    font-size: large;
+    font-size: x-large;
     font-weight: bold;
 }
 
+.World{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
 .kingdom{
     background-color: antiquewhite;
     display:inline-block;
@@ -16,6 +27,7 @@
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 .tooltip {
@@ -30,7 +42,7 @@
     background-color: rgb(92, 113, 140);
     color: #fff;
     text-align: center;
-    padding: 5px 0;
+    padding: 5px;
     border-radius: 6px;
   
     /* Position the tooltip text */
