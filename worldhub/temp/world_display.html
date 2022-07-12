@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'world_display/styles.css' %}">
+    </head>
+    <body>
+        <div class="World">
+            <h1>The World of {{world.name}}</h1>
+            <p>{{world.world_traits}}</p>
+            <p><b>Capital: </b>{{world.capital.name}}</p>
+        </div>
+        <div class="Kingdoms">
+            {% for kingdom in kingdoms %}
+            <div class="kingdom">
+                <h2>{{kingdom.name}}</h2>
+                <div>{{kingdom.kingdom_traits}}</div>
+                <div class="tooltip"><b>Religion: </b>{{kingdom.religion.name}}
+                    <span class="tooltiptext">+++ {{kingdom.religion.desirable}} --- {{kingdom.religion.undesirable}}</span>
+                </div>
+                <br>
+                <div class="tooltip"><b>Leader: </b>{{kingdom.leader.firstname}} {{kingdom.leader.lastname}} ({{kingdom.leader.gender}})
+                    <span class="tooltiptext">{{kingdom.leader.traits}}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
