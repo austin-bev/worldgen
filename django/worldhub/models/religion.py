@@ -1,6 +1,6 @@
-from namegen import religionNames
-from traits_functions import splitTraits
-from traits_people import PeopleTraits, somePeopleTraits
+from ..controllers.namegen import religionNames
+from .traits_functions import splitTraits
+from .traits_people import PeopleTraits, somePeopleTraits
 
 class Religion:
     def __init__(self, name, traits):

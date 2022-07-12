@@ -1,5 +1,5 @@
 import random
-from fileio import *
+from ..controllers.fileio import *
 
 #All FileIO is done in one go at the start. Files need not be accessed again after thiws
 PEOPLENAMES_ALL = parseCsv('names_people.csv')

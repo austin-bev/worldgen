@@ -1,7 +1,7 @@
 import inspect
 import sys
 from typing import Type
-from traits_people import *
+from .traits_people import *
 
 class KingdomTraits:
     def __init__(self):

@@ -1,18 +1,16 @@
 import random
-import people
-from namegen import kingdomNames
-from religion import Religion
-from traits_kingdom import KingdomTraits, someKingdomTraits
-import worldgen
-
+from .people import Person
+from .religion import Religion
+from .traits_kingdom import KingdomTraits, someKingdomTraits
+from ..controllers.namegen import kingdomNames
 
 class Kingdom:
     def __init__(self, name : str, year_created : int , religion : Religion, traits : list[KingdomTraits]):
         self.name : str = name
         self.created : int = year_created 
         self.religion : Religion = religion
-        self.culture : worldgen.Culture = "" #TODO
-        self.leader : people.Person = ""
+        self.culture = "" #TODO
+        self.leader : Person = ""
         self.kingdom_traits : list[KingdomTraits] = traits
         self.slogan : str = "" #Generated from existing traits. TODO
 

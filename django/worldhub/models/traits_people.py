@@ -1,7 +1,7 @@
 import inspect
 import sys
 from typing import Type
-from traits_functions import someTraits
+from .traits_functions import someTraits
 
 class PeopleTraits:
     def __init__(self):

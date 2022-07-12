@@ -1,16 +1,16 @@
 import random
-import kingdom
-import people
-import relationships
-from namegen import *
-from religion import Religion, generateReligions
-from traits_world import WorldTraits, someWorldTraits
+from ..models.kingdom import Kingdom, generateKingdoms
+from ..models.people import generateLeader
+from ..models.relationships import Relationships
+from ..controllers.namegen import *
+from ..models.religion import Religion, generateReligions
+from ..models.traits_world import WorldTraits, someWorldTraits
 
 class World:
     def __init__(self, name, kingdoms, religions, world_traits):
         self.name : str = name
-        self.kingdoms : list[kingdom.Kingdom] = kingdoms
-        self.capital : kingdom.Kingdom = random.choice(kingdoms)
+        self.kingdoms : list[Kingdom] = kingdoms
+        self.capital : Kingdom = random.choice(kingdoms)
         self.religions : list[Religion] = religions
         self.world_traits : list[WorldTraits] = world_traits
     
@@ -22,15 +22,21 @@ class Culture:
         self.likes = []
         self.dislikes = []
 
-if __name__ == "__main__":
+def generateWorld():
     starter_kingdoms = 5
     print("Simulating 1000 years of history")
     religions = generateReligions(starter_kingdoms)
-    kingdoms = kingdom.generateKingdoms(starter_kingdoms, religions)
-    for i in kingdoms: i.setLeader(people.generateLeader(i))
+    kingdoms = generateKingdoms(starter_kingdoms, religions)
+    for i in kingdoms: i.setLeader(generateLeader(i))
     #Generate world object and traits
     world_traits = someWorldTraits(3)
     world = World(worldName(), kingdoms, religions, world_traits)
+    return world
+
+if __name__ == "__main__":
+    world = generateWorld()
+    religions = world.religions
+    kingdoms = world.kingdoms
 
     print(world,'\n')
     for i in kingdoms: 
@@ -39,6 +45,6 @@ if __name__ == "__main__":
     print()
     for i in religions: print(i)
 
-    relationships = relationships.Relationships(starter_kingdoms)
+    relationships = Relationships(kingdoms)
     
     

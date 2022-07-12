@@ -1,10 +1,5 @@
-from namegen import kingdomNames, religionNames
-from religion import Religion, generateReligions
-from traits_functions import splitTraits
-from traits_kingdom import Kingdom_Disliked, Kingdom_FreeTrade, Kingdom_Militarist, Kingdom_Peaceful, Kingdom_RestrictedTrade, Kingdom_WellLiked, someKingdomTraits
-from traits_people import somePeopleTraits
-import worldgen
-import kingdom
+from ..test.relationship_test import relationshipTest
+from .traits_kingdom import Kingdom_Disliked, Kingdom_FreeTrade, Kingdom_Militarist, Kingdom_Peaceful, Kingdom_RestrictedTrade, Kingdom_WellLiked
 
 # Initial relationship depends on:
 # Well liked ++
@@ -48,7 +43,6 @@ class Relationships:
             reputation[i] += self.calculateReputation(kingdoms[i])
         relationships = [reputation[::] for i in range(l)]
         for i in range(l): relationships[i][i] = 0 #All kingdoms should not hate or like themselves.
-        print(relationships)
         return relationships
 
     def calculateReputation(self, kingdom):
@@ -59,8 +53,5 @@ class Relationships:
         return rep
 
 if __name__ == "__main__":
-    religions = generateReligions(5)
-    kingdoms = kingdom.generateKingdoms(5, religions)
-    rel = Relationships(kingdoms)
-    for i in kingdoms: print(i)
+    relationshipTest()
         

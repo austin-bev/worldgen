@@ -1,7 +1,8 @@
 import os
 def parseCsv(filename) -> list[list[str]]: 
     THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
-    my_file = os.path.join(THIS_FOLDER, filename)
+    DATA_FOLDER = os.path.abspath(THIS_FOLDER + "/../data")
+    my_file = os.path.join(DATA_FOLDER, filename)
     f = open(my_file, "r", encoding='utf-8-sig')
 
     # Initialize 2 empty lists
