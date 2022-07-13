@@ -139,14 +139,7 @@ class Kingdom_Drugs(KingdomTraits):
         super().__init__()
         self.name = 'Drug-fueled'
         self.conflicting = []      
-        self.people_traits = [People_DrugAddicted] 
-
-class Kingdom_Amphibious(KingdomTraits):
-    def __init__(self):
-        super().__init__()
-        self.name = 'Amphibious'
-        self.conflicting = [] 
-        self.people_traits = []   #More interest in the water. Considering removing...        
+        self.people_traits = [People_DrugAddicted]      
           
 class Kingdom_Wizards(KingdomTraits):
     def __init__(self):

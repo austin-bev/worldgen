@@ -5,19 +5,23 @@
         <link rel="stylesheet" type="text/css" href="{% static 'world_display/styles.css' %}">
     </head>
     <body>
-        <div class="World">
+        <div class="world-header">
             <h1>The World of {{world.name}}</h1>
             <p>{{world.world_traits}}</p>
-            <p><b>Capital: </b>{{world.capital.name}}</p>
+            <p><b>Capital: </b>
+                <span class="tooltip">{{world.capital.name}}
+                    <span class="tooltiptext">{{world.capital.kingdom_traits}}</span>
+                </span>
+            </p>
         </div>
-        <div class="Kingdoms">
+        <div class="kingdom-container">
             {% for kingdom in kingdoms %}
             <div class="kingdom">
                 <div class="kingdomtitle">{{kingdom.name}}</div>
                 <div>{{kingdom.kingdom_traits}}</div>
                 <br>
                 <div class="tooltip"><b>Religion: </b>{{kingdom.religion.name}}
-                    <span class="tooltiptext"><span class="green">{{kingdom.religion.desirable}}</span><br><span class="red">{{kingdom.religion.undesirable}}</span></span>
+                    <span class="tooltiptext"><span style="color:greenyellow">{{kingdom.religion.desirable}}</span><br><span style="color:red">{{kingdom.religion.undesirable}}</span></span>
                 </div>
                 <br>
                 <div class="tooltip"><b>Leader: </b>{{kingdom.leader.firstname}} {{kingdom.leader.lastname}} ({{kingdom.leader.gender}})
